@@ -1,3 +1,3 @@
-print("Hello World")
-print("Kirill")
-print("Rodion")
+
+s=open('in.txt')
+print(s.readlines())
