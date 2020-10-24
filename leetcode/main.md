@@ -1,4 +1,6 @@
 + [Sqrt(x)](#sqrtx)
++ [Reverse Words in a String III](#reverse-words-in-a-string-iii)
+
 ## Sqrt(x)
 https://leetcode.com/problems/sqrtx/
 ```python
@@ -18,4 +20,13 @@ def mySqrt(self, x: int) -> int:
         return int(check + 1)
     else:
         return int(math.floor(mid))
+```
+## Reverse Words in a String III
+https://leetcode.com/problems/reverse-words-in-a-string-iii/
+```python
+def reverseWords(self, s: str) -> str:
+    s=s.split()
+    for i in range(len(s)):
+        s[i]=s[i][::-1]
+    return " ".join(s)
 ```
