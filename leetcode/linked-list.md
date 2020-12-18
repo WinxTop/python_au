@@ -3,11 +3,11 @@
 + [Palindrome Linked List](#palindrome-linked-list)
 + [Merge Two Sorted Lists](#merge-two-sorted-lists)
 + [Remove Nth Node From End of List](#remove-nth-node-from-end-of-list)
-+ [Linked List Cycle II](#linked-list-cycle-ii)
 + [Linked List Cycle](#linked-list-cycle)
-+ [Reorder List](#reorder-list)
 + [Intersection of Two Linked Lists](#intersection-of-two-linked-lists)
 + [Sort List](#sort-list)
++ [Reorder List](#reorder-list)
++ [Linked List Cycle II](#linked-list-cycle-ii)
 ## Reverse Linked List
 https://leetcode.com/problems/reverse-linked-list/
 ```python
@@ -85,20 +85,6 @@ def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
     slow.next=slow.next.next
     return head
 ```
-## Linked List Cycle II
-https://leetcode.com/problems/linked-list-cycle-ii/
-```python
- detectCycle(self, head: ListNode) -> ListNode:
-mp = head
-= []
-ile(temp):
-f temp not in a:
-a.append(temp)
-lse:
-return temp
-emp = temp.next
-turn None
-```
 ## Linked List Cycle
 https://leetcode.com/problems/linked-list-cycle/
 ```python
@@ -110,37 +96,6 @@ def hasCycle(self, head: ListNode) -> bool:
         if(slow == fast):
             return True
     return False
-```
-## Reorder List
-https://leetcode.com/problems/reorder-list/
-```python
- reorderList(self, head: ListNode) -> None:
- not head:
-eturn head
-= []
-mp = head
-ile(temp):
-.append(temp)
-emp = temp.next
-mp = head
-= 0
-= len(a)//2
-= -1
-= 1
-= -1
-r _ in range(len(a)-1):
-f o==1:
-temp.next = a[n]
-temp = temp.next
-o = -1
-n+=1
-lse:
-temp.next = a[m]
-temp = temp.next
-o = 1
-m-=1
-mp.next = None
-turn head
 ```
 ## Intersection of Two Linked Lists
 https://leetcode.com/problems/intersection-of-two-linked-lists/
@@ -189,4 +144,49 @@ def sortList(self, head: ListNode) -> ListNode:
         prev.next = l1 or l2
         return dummy.next
     return mergeSort(head)
+```
+## Reorder List
+https://leetcode.com/problems/reorder-list/
+```python
+def reorderList(self, head: ListNode) -> None:
+    if not head:
+        return head
+    a = []
+    temp = head
+    while(temp):
+        a.append(temp)
+        temp = temp.next
+    temp = head
+    i = 0
+    n = len(a)//2
+    m = -1
+    n = 1
+    o = -1
+    for _ in range(len(a)-1):
+        if o==1:
+            temp.next = a[n]
+            temp = temp.next
+            o = -1
+            n+=1
+        else:
+            temp.next = a[m]
+            temp = temp.next
+            o = 1
+            m-=1
+    temp.next = None
+    return head
+```
+## Linked List Cycle II
+https://leetcode.com/problems/linked-list-cycle-ii/
+```python
+def detectCycle(self, head: ListNode) -> ListNode:
+    temp = head
+    a = []
+    while(temp):
+        if temp not in a:
+            a.append(temp)
+        else:
+            return temp
+        temp = temp.next
+    return None
 ```
