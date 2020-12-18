@@ -1,0 +1,43 @@
+import sys
+
+
+class hexNumber:
+    def __init__(self, hexString):
+        self.chars = hexString
+        self.symbols = {
+            '0': 0, '1': 1, '2': 2, '3': 3,
+            '4': 4, '5': 5, '6': 6, '7': 7,
+            '8': 8, '9': 9, 'A': 10, 'B': 11,
+            'C': 12, 'D': 13, 'E': 14, 'F': 15
+        }
+        self.value = self.stringToHex()
+
+    def isCorrect(self):
+        for char in self.chars:
+            if not (char in self.symbols):
+                return False
+
+        return True
+
+    def stringToHex(self):
+        value = 0
+        if self.isCorrect():
+            for i in range(0, len(self.chars)):
+                value += (16 ** i) * self.symbols[self.chars[len(self.chars) - i - 1]]
+
+        return value
+
+    def add(self, hexNum):
+        return self.value + hexNum.value
+
+
+def main(hexString1, hexString2):
+    hex1 = hexNumber(hexString1)
+    hex2 = hexNumber(hexString2)
+
+    print(hex1.value, hex2.value);
+    print(hex1.add(hex2))
+
+
+if __name__ == '__main__':
+    main(sys.argv[1], sys.argv[2])
